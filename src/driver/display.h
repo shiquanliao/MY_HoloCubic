@@ -7,6 +7,8 @@ class Display
 {
 public:
     void init(uint8_t rotation, uint8_t backLight);
+    void routine();
+    void setBackLight(float);
 }
 
 #endif

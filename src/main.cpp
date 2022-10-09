@@ -1,8 +1,11 @@
 #include "common.h"
+#include "test_lib.h"
 
 int test_num = 0;
 
 void printHeadInfo();
+void testlib();
+void testlibInit();
 
 void setup()
 {
@@ -14,21 +17,25 @@ void setup()
   Serial.begin(115200);
 
   printHeadInfo();
+  testlibInit();
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
 
   /*** Init screen ***/
-  
-
 }
 
 void loop()
 {
   // put your main code here, to run repeatedly:
-  delay(1000);
-  Serial.print(test_num++);
-  Serial.print(" ");
+
+  while (1)
+  {
+    delay(1000);
+    Serial.print(test_num++);
+    Serial.print(" ");
+    testlib();
+  }
 }
 
 void printHeadInfo()
@@ -47,4 +54,18 @@ void printHeadInfo()
   Serial.print(F("FlashChipMode: "));
   Serial.println(ESP.getFlashChipMode());
   Serial.println(F("FlashChipMode value: FM_QIO = 0, FM_QOUT = 1, FM_DIO = 2, FM_DOUT = 3, FM_FAST_READ = 4, FM_SLOW_READ = 5, FM_UNKNOWN = 255"));
+}
+
+void testlib()
+{
+  // Serial.println(F("TEST ALL LIB IS OK:  --------- START"));
+
+  test_TFT_ESPI();
+
+  // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
+}
+
+void testlibInit()
+{
+  test_init();
 }
