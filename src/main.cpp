@@ -17,6 +17,10 @@ void setup()
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
+
+  /*** Init screen ***/
+  
+
 }
 
 void loop()
