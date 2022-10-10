@@ -1,7 +1,7 @@
   // This is the command sequence that rotates the ST7789 driver coordinate frame
 
   writecommand(TFT_MADCTL);
-  rotation = m % 4;
+  rotation = m % 5;
   switch (rotation) {
     case 0: // Portrait
 #ifdef CGRAM_OFFSET
@@ -137,4 +137,23 @@
       _width  = _init_height;
       _height = _init_width;
       break;
+    
+    case 4:  // Inverter portrait & Mirror Y
+#ifdef CGRAM_OFFSET
+    if (_init_width == 135)
+    {
+        colstart = 53;
+        rowstart = 40;
+    }
+    else
+    {
+        colstart = 0;
+        rowstart = 0;
+    }
+#endif
+    writedata(TFT_MAD_MX | TFT_MAD_COLOR_ORDER);
+
+    _width = _init_width;
+    _height = _init_height;
+    break;
   }
