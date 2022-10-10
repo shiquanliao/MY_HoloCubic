@@ -16,8 +16,9 @@ void test_TFT_ESPI()
 void test_init()
 {
     // must add 2 line code 
-    ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 8);
+    ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 10);
     ledcAttachPin(LCD_BL_PIN, LCD_BL_PWM_CHANNEL);
+    ledcWrite(LCD_BL_PWM_CHANNEL, 800);
     // tft init
     tft.init();
     tft.setRotation(0);
