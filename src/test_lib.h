@@ -10,7 +10,11 @@ TFT_eSprite img = TFT_eSprite(&tft);
 
 void test_TFT_ESPI()
 {
-    
+    // draw text
+    tft.setCursor(10, 10);
+    tft.setTextColor(TFT_GREEN);
+    tft.setTextSize(2);
+    tft.print("stone gread job!");
 }
 
 void test_init()
@@ -18,11 +22,11 @@ void test_init()
     // must add 2 line code 
     ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 10);
     ledcAttachPin(LCD_BL_PIN, LCD_BL_PWM_CHANNEL);
-    ledcWrite(LCD_BL_PWM_CHANNEL, 800);
+    ledcWrite(LCD_BL_PWM_CHANNEL, 600);
     // tft init
     tft.init();
-    tft.setRotation(0);
-    tft.fillScreen(TFT_ORANGE);
+    tft.setRotation(4);
+    tft.fillScreen(TFT_BLACK);
 
 }
 
