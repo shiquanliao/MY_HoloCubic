@@ -3,4 +3,8 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+.vscode/*
 .lh/*
+.pio/libdeps/*/Unity
+.pio/.DS_Store
+**/.DS_Store

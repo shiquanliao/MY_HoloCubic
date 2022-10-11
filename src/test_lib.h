@@ -6,11 +6,26 @@
 #include <iostream>
 #include <string>
 #include "driver/display.h"
+// #include <examples/Generic/drawXBitmap/xbm.h>
+// #include <examples/Generic/Animated_Eyes_1/data/logo.h>
+#include <../data/logo_3.h>
 
-using namespace std;
 
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite img = TFT_eSprite(&tft);
+
+
+void test_init()
+{
+    // must add 2 line code
+    ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 10);
+    ledcAttachPin(LCD_BL_PIN, LCD_BL_PWM_CHANNEL);
+    ledcWrite(LCD_BL_PWM_CHANNEL, 600);
+    // tft init
+    tft.init();
+    tft.setRotation(4);
+    tft.fillScreen(TFT_BLACK);
+}
 
 void test_TFT_ESPI()
 {
@@ -46,17 +61,18 @@ void show_String(int counter)
     tft.drawCentreString(intStr, 120, 140, 2);
 }
 
-
-void test_init()
+void show_xbm()
 {
-    // must add 2 line code
-    ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 10);
-    ledcAttachPin(LCD_BL_PIN, LCD_BL_PWM_CHANNEL);
-    ledcWrite(LCD_BL_PWM_CHANNEL, 600);
-    // tft init
-    tft.init();
-    tft.setRotation(4);
-    tft.fillScreen(TFT_BLACK);
+   
+    // Example 1
+    int x = (tft.width() - logoWidth) / 2;
+    int y = (tft.height() - logoHeight) / 2;
+
+    tft.drawXBitmap(x, y, logo, logoWidth, logoHeight, TFT_WHITE);
+
+    // delay(1000);
+ 
+    // tft.drawXBitmap(x, y, logo, logoWidth, logoHeight, TFT_BLACK);
 }
 
 #endif
