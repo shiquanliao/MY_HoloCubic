@@ -30,12 +30,22 @@ void show_Number(int counter)
 {
 
     // 设置背景色可以防止数字重叠
+    tft.setTextColor(TFT_BROWN, TFT_BLACK);
+
+    tft.drawNumber(counter, 110, 100, 2);
+}
+
+void show_String(int counter)
+{
+
+    // 设置背景色可以防止数字重叠
     tft.setTextColor(TFT_YELLOW, TFT_BLACK);
 
-    char intStr[6];
-    sprintf(intStr, "%d", counter);
-    tft.drawCentreString(intStr, 120, 100, 2);
+    char intStr[12];
+    sprintf(intStr, "str: %d", counter);
+    tft.drawCentreString(intStr, 120, 140, 2);
 }
+
 
 void test_init()
 {

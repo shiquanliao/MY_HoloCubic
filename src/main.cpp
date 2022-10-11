@@ -62,6 +62,7 @@ void testlib()
   // Serial.println(F("TEST ALL LIB IS OK:  --------- START"));
 
   // test_TFT_ESPI();
+  show_String(test_num);
   show_Number(test_num);
   // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
 }
