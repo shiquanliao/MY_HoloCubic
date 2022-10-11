@@ -18,6 +18,7 @@ void setup()
 
   printHeadInfo();
   testlibInit();
+  test_TFT_ESPI();
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
@@ -60,8 +61,8 @@ void testlib()
 {
   // Serial.println(F("TEST ALL LIB IS OK:  --------- START"));
 
-  test_TFT_ESPI();
-
+  // test_TFT_ESPI();
+  show_Number(test_num);
   // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
 }
 
