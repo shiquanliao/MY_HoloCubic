@@ -8,7 +8,9 @@
 #include "driver/display.h"
 // #include <examples/Generic/drawXBitmap/xbm.h>
 // #include <examples/Generic/Animated_Eyes_1/data/logo.h>
-#include <../data/logo_3.h>
+#include <../data/logo_4.h>
+// #include <../data/logo_3.h>
+#include <font_xingkai_gb1803020.h>
 
 
 TFT_eSPI tft = TFT_eSPI();
@@ -20,7 +22,7 @@ void test_init()
     // must add 2 line code
     ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 10);
     ledcAttachPin(LCD_BL_PIN, LCD_BL_PWM_CHANNEL);
-    ledcWrite(LCD_BL_PWM_CHANNEL, 600);
+    ledcWrite(LCD_BL_PWM_CHANNEL, 950);
     // tft init
     tft.init();
     tft.setRotation(4);
@@ -29,16 +31,19 @@ void test_init()
 
 void test_TFT_ESPI()
 {
+    tft.loadFont(font_xingkai);
     // draw text
     tft.setCursor(10, 10);
     tft.setTextColor(TFT_GREEN);
-    tft.setTextSize(2);
+    tft.setTextSize(1);
     tft.print("stone gread job!");
+
 
     tft.setTextColor(TFT_ORANGE);
 
-    tft.drawCentreString("HELLO", 120, 30, 2);
-    tft.drawCentreString("WORLD", 120, 60, 2);
+    tft.drawCentreString("石泉", 120, 60, 1);
+    tft.drawCentreString("LOVE", 120, 100, 1);
+    tft.drawCentreString("杨柳", 120, 140, 1);
 }
 
 void show_Number(int counter)
@@ -73,6 +78,13 @@ void show_xbm()
     // delay(1000);
  
     // tft.drawXBitmap(x, y, logo, logoWidth, logoHeight, TFT_BLACK);
+}
+
+void show_chinese()
+{
+    
+    tft.setTextColor(TFT_RED, TFT_BLACK);
+    tft.drawCentreString("爱", 120, 30, 2);
 }
 
 #endif
