@@ -1,5 +1,6 @@
 #include "common.h"
 #include "test_tft_espi.h"
+#include "test_lvgl.h"
 
 int test_num = 0;
 
@@ -18,8 +19,6 @@ void setup()
 
   printHeadInfo();
   testlibInit();
-  test_TFT_ESPI();
-  show_img();
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
@@ -36,6 +35,7 @@ void loop()
     delay(1000);
     Serial.print(test_num++);
     Serial.print(" ");
+
     testlib();
   }
 }
@@ -67,10 +67,21 @@ void testlib()
   // show_Number(test_num);
   // show_xbm();
   // show_chinese();
+  lv_task_handler(); // 这个代码必现加, 不然不能显示
   // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
 }
 
 void testlibInit()
 {
-  test_init();
+  /* ------------- test TFT_ESPI start ------------- */
+  // test_TFT_ESPI_init();
+  // test_TFT_ESPI();
+  // // show_img();
+  /* -------------  test TFT_ESPI end ------------- */
+
+
+  /* ------------- test lvgl start ------------- */
+  test_lvgl_init();
+  test_lvgl_button();
+  /* ------------- test lvgl end ------------- */
 }
