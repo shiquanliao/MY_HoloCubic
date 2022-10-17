@@ -1,5 +1,5 @@
 #include "common.h"
-#include "test_lib.h"
+#include "test_tft_espi.h"
 
 int test_num = 0;
 
@@ -18,7 +18,8 @@ void setup()
 
   printHeadInfo();
   testlibInit();
-  // test_TFT_ESPI();
+  test_TFT_ESPI();
+  show_img();
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
@@ -64,7 +65,8 @@ void testlib()
   // test_TFT_ESPI();
   // show_String(test_num);
   // show_Number(test_num);
-  show_xbm();
+  // show_xbm();
+  // show_chinese();
   // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
 }
 
