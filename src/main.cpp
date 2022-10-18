@@ -35,7 +35,6 @@ void loop()
     delay(1000);
     Serial.print(test_num++);
     Serial.print(" ");
-
     testlib();
   }
 }
@@ -67,7 +66,9 @@ void testlib()
   // show_Number(test_num);
   // show_xbm();
   // show_chinese();
-  lv_task_handler(); // 这个代码必现加, 不然不能显示
+  // lv_task_handler(); // 这个代码必现加, 不然不能显示
+  lv_timer_handler(); // 这个代码必现加, 不然不能显示
+  setWidgetState(test_num);
   // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
 }
 
