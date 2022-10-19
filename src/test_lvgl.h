@@ -4,14 +4,12 @@
 #include <lvgl.h>
 #include <Arduino.h>
 
-#define DISP_HOR_RES 240
-#define DISP_VER_RES 240
 /* Maximal horizontal and vertical resolution to support by the library.*/
 #define LV_HOR_RES_MAX (240)
 #define LV_VER_RES_MAX (240)
 
 static lv_disp_draw_buf_t draw_buf;
-static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES / 10];
+static lv_color_t buf1[LV_HOR_RES_MAX * LV_VER_RES_MAX / 10];
 static lv_style_t style_btn;
 static lv_style_t style_btn_pressed;
 static lv_style_t style_btn_red;
@@ -109,7 +107,7 @@ void test_lvgl_init()
     ledcSetup(LCD_BL_PWM_CHANNEL, 5000, 10);
     ledcAttachPin(LCD_BL_PIN, LCD_BL_PWM_CHANNEL);
 
-    lv_init();
+    
 #if LV_USE_LOG != 0
     lv_log_register_print_cb(my_log_cb); /* register print function for debugging */
 #endif
@@ -120,7 +118,9 @@ void test_lvgl_init()
     tft->setRotation(4);
     tft->fillScreen(TFT_ORANGE);
 
-    lv_disp_draw_buf_init(&draw_buf, buf1, NULL, DISP_HOR_RES * DISP_VER_RES / 10);
+    lv_init();
+
+    lv_disp_draw_buf_init(&draw_buf, buf1, NULL, LV_HOR_RES_MAX * LV_VER_RES_MAX / 10);
 
     /*Initialize the display*/
     static lv_disp_drv_t disp_drv;

@@ -5,9 +5,17 @@
 
 #include <Arduino.h>
 #include <TFT_eSPI.h>
+#include <Preferences.h>
+#include "config.h"
+#include "driver/display.h"
 
-TFT_eSPI* tft =new TFT_eSPI();
-TFT_eSprite img = TFT_eSprite(tft);
+extern Config g_cfg;      // 全局配置文件
+extern Preferences prefs; // 声明Preferences对象
+extern Display screen;    // 屏幕对象
+
+
+extern TFT_eSPI* tft;
+extern TFT_eSprite* img;
 
 
 #endif

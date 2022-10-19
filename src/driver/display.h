@@ -4,10 +4,11 @@
 #define LCD_BL_PIN 5
 #define LCD_BL_PWM_CHANNEL 0
 
+
 class Display
 {
 public:
-    void init(uint8_t rotation, uint8_t backLight);
+    void init();
     void routine();
     void setBackLight(float);
 };

@@ -16,14 +16,19 @@ void setup()
   // put your setup code here, to run once:
   // Sets the data rate in bits per second(baud) for Serial data transmission
   Serial.begin(115200);
-
   printHeadInfo();
-  testlibInit();
+  config_read(NULL, &g_cfg);  // read Flash paramaeters in pres
+  
+
+
+  /*** Init screen ***/
+  screen.init();
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
 
-  /*** Init screen ***/
+  // ------------- for test
+  // testlibInit();
 }
 
 void loop()
@@ -35,9 +40,13 @@ void loop()
     delay(1000);
     Serial.print(test_num++);
     Serial.print(" ");
-    testlib();
+    // testlib();
+    screen.routine();
   }
 }
+
+
+/* -------------------for test----------------------- */
 
 void printHeadInfo()
 {
@@ -68,7 +77,7 @@ void testlib()
   // show_chinese();
   // lv_task_handler(); // 这个代码必现加, 不然不能显示
   lv_timer_handler(); // 这个代码必现加, 不然不能显示
-  setWidgetState(test_num);
+  // setWidgetState(test_num);
   // Serial.println(F("TEST ALL LIB IS OK:  --------- END"));
 }
 
