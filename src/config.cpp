@@ -44,3 +44,29 @@ void config_save(const char *file_path, Config *cfg)
     // tft->setRotation(g_cfg.rotation);
     
 }
+
+void mpu_config_read(const char *file_path, Config *cfg)
+{
+
+    prefs.begin("MPU_Config"); // 打开命名空间mynamespace
+    cfg->mpu_config.x_gyro_offset = prefs.getInt("x_gyro_offset", 0);
+    cfg->mpu_config.y_gyro_offset = prefs.getInt("y_gyro_offset", 0);
+    cfg->mpu_config.z_gyro_offset = prefs.getInt("z_gyro_offset", 0);
+    cfg->mpu_config.x_accel_offset = prefs.getInt("x_accel_offset", 0);
+    cfg->mpu_config.y_accel_offset = prefs.getInt("y_accel_offset", 0);
+    cfg->mpu_config.z_accel_offset = prefs.getInt("z_accel_offset", 0);
+    prefs.end(); // 关闭当前命名空间
+}
+
+void mpu_config_save(const char *file_path, Config *cfg)
+{
+    prefs.begin("MPU_Config"); // 打开命名空间mynamespace
+    prefs.putInt("x_gyro_offset", cfg->mpu_config.x_gyro_offset);
+    prefs.putInt("y_gyro_offset", cfg->mpu_config.y_gyro_offset);
+    prefs.putInt("z_gyro_offset", cfg->mpu_config.z_gyro_offset);
+    prefs.putInt("x_accel_offset", cfg->mpu_config.x_accel_offset);
+    prefs.putInt("y_accel_offset", cfg->mpu_config.y_accel_offset);
+    prefs.putInt("z_accel_offset", cfg->mpu_config.z_accel_offset);
+
+    prefs.end(); // 关闭当前命名空间
+}

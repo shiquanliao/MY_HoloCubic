@@ -13,9 +13,11 @@ extern Config g_cfg;      // 全局配置文件
 extern Preferences prefs; // 声明Preferences对象
 extern Display screen;    // 屏幕对象
 
+extern TFT_eSPI *tft;
+extern TFT_eSprite *img;
 
-extern TFT_eSPI* tft;
-extern TFT_eSprite* img;
-
+boolean doDelayMillisTime(unsigned long interval,
+                          unsigned long *previousMillis,
+                          boolean state);
 
 #endif
