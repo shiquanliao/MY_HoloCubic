@@ -2,10 +2,12 @@
 #include "test_tft_espi.h"
 #include "test_lvgl.h"
 #include "driver/imu.h"
+#include "sys/app_controller.h"
 
 int test_num = 0;
 IMU mpu;
 Imu_Action *act_info; // 存放mpu6050返回的数据
+AppController *app_contorller; // APP控制器
 
 void printHeadInfo();
 void testlib();
@@ -24,9 +26,12 @@ void setup()
 
   /*** Init screen ***/
   screen.init();
+  // screen.setBackLight(0.5);
 
   /*** Init IMU as input device ***/
   mpu.init();
+
+  app_contorller = new AppController(); 
 
   // need put down setup for init
   // SPIFFS is ESP32 Own FFS
