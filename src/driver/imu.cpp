@@ -71,21 +71,21 @@ Imu_Action *IMU::update(int interval)
     if (millis() - last_update_time > interval)
     {
 
-        Serial.print(action_info.ax);
-        Serial.print(" ");
-        Serial.print(action_info.ay);
-        Serial.print(" ");
-        Serial.print(action_info.az);
-        Serial.println(" ");
+        // Serial.print(action_info.ax);
+        // Serial.print(" ");
+        // Serial.print(action_info.ay);
+        // Serial.print(" ");
+        // Serial.print(action_info.az);
+        // Serial.println(" ");
 
-        Serial.printf("action_info isValid: %d\n", action_info.isValid);
+        // Serial.printf("action_info isValid: %d\n", action_info.isValid);
         action_info.isValid = 0;
         
         if (!action_info.isValid)
         {
             if (action_info.ax < -4000)
             {
-                Serial.printf("action_info.ax: %d", action_info.ax);
+                // Serial.printf("action_info.ax: %d", action_info.ax);
                 encoder_diff--;
                 action_info.isValid = 1;
                 action_info.active = TURN_LEFT;
@@ -96,12 +96,12 @@ Imu_Action *IMU::update(int interval)
                 encoder_diff++;
                 action_info.isValid = 1;
                 action_info.active = TURN_RIGHT;
-                Serial.println(F("active TURN_RIGHT"));
+                // Serial.println(F("active TURN_RIGHT"));
             }
             else
             {
                 action_info.isValid = 0;
-                Serial.println(F("active NOTHING!!!"));
+                // Serial.println(F("active NOTHING!!!"));
             }
         }
 
@@ -188,9 +188,9 @@ Imu_Action *IMU::update(int interval)
         if (UNKNOWN != action_info.active)
         {
             action_info.active = (ACTIVE_TYPE)((action_info.active + 0) % UNKNOWN);
-            Serial.println(F("active UNKNOWN"));
+            // Serial.println(F("active UNKNOWN"));
         }
-        Serial.printf("action direction: %d %s \n" , action_info.active, activeTypeName[action_info.active]);
+        // Serial.printf("action direction: %d %s \n" , action_info.active, activeTypeName[action_info.active]);
 
     }
     return &action_info;

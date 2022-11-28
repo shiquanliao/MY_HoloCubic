@@ -16,6 +16,7 @@ static lv_style_t focused_state_style;
 static lv_style_t app_name_style;
 
 LV_FONT_DECLARE(lv_font_montserrat_24);
+LV_FONT_DECLARE(lv_font_cn_test_zhongguo_30);
 
 void app_controller_gui_init(void)
 {
@@ -34,7 +35,7 @@ void app_controller_gui_init(void)
     lv_style_init(&app_name_style);
     lv_style_set_text_opa(&app_name_style, LV_OPA_COVER);
     lv_style_set_text_color(&app_name_style, lv_color_hex(0xeddd00));
-    lv_style_set_text_font(&app_name_style, &lv_font_montserrat_24);
+    lv_style_set_text_font(&app_name_style, &lv_font_cn_test_zhongguo_30);
 
     // APP 图标页
     app_scr = lv_obj_create(NULL);

@@ -20,7 +20,7 @@ AppController::AppController()
     appList[0] = new APP_OBJ();
     // appList[0]->app_image = &app_loading;
     appList[0]->app_image = &bigSon;
-    appList[0]->app_name = "None";
+    appList[0]->app_name = "乘风破浪";
     display();
 }
 
